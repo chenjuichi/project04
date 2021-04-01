@@ -1,0 +1,206 @@
+    1  lsb_release -a
+    2  sudo apt update sudo apt -y upgrade
+    3  sudo apt update
+    4  sudo apt -y upgrade
+    5  blkid | awk -F\" '/swap/ {print $2}'
+    6  blkid
+    7  ls
+    8  sudo swapon --show  .== check if your Ubuntu installation already has swap enabled
+    9  
+   10  sudo free -h
+   11  sudo fallocate -l 8G /swapfile1
+   12  sudo chmod 777 /swapfile1
+   13  sudo mkswap /swapfile1
+   14  sudo chmod 600 /swapfile1
+   15  sudo mkswap /swapfile1
+   16  sudo swapon /swapfile1
+   17  sudo free -h
+   18  lsblk
+   19  swapon -s
+   20  sudo swapon --show
+   21  sudo free -h
+   22  mkdir .ssh
+   23  ls
+   24  nano ~/.ssh/authorized_keys
+   25  chmod 700 ~/.ssh
+   26  chmod 600 ~/.ssh/authorized_keys
+   27  chown $USER:$USER ~/.ssh -R
+   28  nano /etc/ssh/sshd_config
+   29  vim /etc/sysctl.conf
+   30  sudo sysctl -p
+   31  cat /proc/sys/fs/inotify/max_user_watches
+   32  sysctl net.ipv4.ip_forward
+   33  vim /etc/sysctl.conf
+   34  sysctl net.ipv4.ip_forward
+   35  sudo sysctl -p
+   36  sudo apt-get install openssh-server
+   37  sudo systemctl status ssh
+   38  nano /etc/ssh/sshd_config
+   39  sudo systemctl restart ssh
+   40  sudo apt -y install software-properties-common
+   41  sudo add-apt-repository ppa:ondrej/php
+   42  sudo apt update
+   43  systemctl list-units --type=target --all
+   44  systemctl list-units --type=service --all | grep ssh
+   45  sudo apt -y install php7.4
+   46  sudo apt -y install php7.4-mysql mysql-client mysql-server
+   47  sudo apt -y install php7.4-mbstring php7.4-xml php7.4-zip unzip vim git php7.4-cli php7.4-common php7.4-gd php7.4-curl php7.4-intl php7.4-bcmath php7.4-imap libapache2-mod-php7.4
+   48  php -v
+   49  php -m
+   50  ll /
+   51  sudo apt autoremove
+   52  php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+   53  php -r "if (hash_file('sha384', 'composer-setup.php') === '756890a4488ce9024fc62c56153228907f1545c228516cbf63f885e036d37e9a59d27d63f46af1d4d07ee0f76181c7d3') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+   54  php composer-setup.php
+   55  php -r "unlink('composer-setup.php');"
+   56  ls
+   57  sudo mv composer.phar /usr/local/bin/composer
+   58  ls
+   59  which php
+   60  echo 'export PATH="$HOME/.config/composer/vendor/bin:$PATH"' >> ~/.bashrc
+   61  echo 'export PATH="/usr/bin/php:$PATH"' >> ~/.bashrc
+   62  source ~/.bashrc
+   63  composer global require laravel/installer
+   64  composer global about
+   65  php -m
+   66  sudo apt -y install nodejs
+   67  sudo apt -y install npm
+   68  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
+   69  echo 'export NVM_DIR="$HOME/.nvm"' >> ~/.bashrc
+   70  echo '#This loads nvm' >> ~/.bashrc
+   71  echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> ~/.bashrc
+   72  echo '#This loads nvm bash_completion' >> ~/.bashrc
+   73  echo '[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"' >> ~/.bashrc
+   74  source ~/.bashrc
+   75  nvm --version
+   76  nvm install v12.20.1
+   77  npm -v
+   78  sudo apt -y install git
+   79  composer create-project --prefer-dist laravel/laravel:^7.0 project04
+   80  ls
+   81  cd project04
+   82  ls
+   83  git init
+   84  
+   85  
+   86  echo "# my laravel application, project04" >> README.md
+   87  git status
+   88  git add .
+   89  
+   90  git commit -m "ver0.0"
+   91  git config --global user.email "chenjuichi@gmail.com"
+   92  git config --global user.name "chenjuichi"
+   93  git commit -m "ver0.0"
+   94  git log
+   95  nano .gitignore
+   96  git remote add origin https://github.com/chenjuichi/project04
+   97  git status
+   98  git add .
+   99  git commit -m "ver0.0"
+  100  git log
+  101  
+  102  git push -u origin master
+  103  chmod -R 777 storage
+  104  chmod -R 777 bootstrap/cache
+  105  ls
+  106  npm install
+  107  npm audit fix
+  108  npm set audit false
+  109  ls
+  110  mysql
+  111  mysql -u root -p
+  112  composer require laravel/ui:2.*
+  113  php artisan ui vue --auth
+  114  npm install && npm run dev
+  115  npm install vuetify
+  116  npm install vuex --save
+  117  npm install vue-router
+  118  npm install --save @fortawesome/fontawesome-free
+  119  npm install @mdi/font
+       npm install material-icons
+       npm install material-design-icons
+  120  npm install --save vue-sweetalert2
+  121  npm install vue-i18n
+       npm install vue-country-flag
+       npm install bootstrap-select
+       npm install vue-slide-up-down
+       npm install view-design --save
+       npm install moment --save
+       npm install malihu-custom-scrollbar-plugin
+       npm install socket.io
+  122  npm install
+       npm run dev
+
+       composer require --dev squizlabs/php_codesniffer
+       composer global require friendsofphp/php-cs-fixer
+  123  composer require laravel/sanctum
+  124  php artisan vendor:publish --provider="Laravel\Sanctum\SanctumServiceProvider"
+  125  php artisan make:model Role -m
+  126  php artisan make:model Permission -m
+  127  php artisan make:migration create_users_permissions_table
+  128  php artisan make:migration create_users_roles_table
+  129  php artisan make:migration create_roles_permissions_table
+  130  mysql
+  131  mysql -u root -p
+  132  php artisan migrate
+  133  
+  134  
+  135  php artisan make:seeder UsersTableSeeder
+  136  php artisan migrate:fresh --seed
+  137  php artisan db:seed --class=UsersTableSeeder
+  138  php artisan migrate:fresh --seed
+  139  php artisan make:seeder PermissionsTableSeeder
+  140  php artisan make:seeder RolesTableSeeder
+  141  php artisan db:seed --class=RolesTableSeeder
+  142  php artisan db:seed --class=PermissionsTableSeeder
+  143  
+  144  
+  145  
+  146  
+  147  
+  148  
+  149  
+  150  
+  151  
+  152  
+  153  
+  154  
+  155  
+  156  
+  157  
+  158  
+  159  composer require guzzlehttp/guzzle
+  160  php artisan storage:link
+  161  
+  162  php artisan make:controller AdminController
+  163  php artisan make:model Tag --migration
+  164  php artisan make:model Category --migration
+  165  
+  166  
+  167  
+  168  
+  169  
+  170  
+  171  
+  172  
+  173  
+  174  
+  175  
+  176  
+  177  
+  178  
+  179  
+  180  
+  181  
+  182  
+  183  php artisan make:middleware AdminCheck
+  184  
+  185  
+  186  echo $PATH
+  187  vim ~/.bashrc
+  188  echo $PATH
+  189  source ~/.bashrc
+  190  echo $PATH
+  191  php -S 172.105.193.109:8000 -t public/
+  192  npm run watch
+  193  history > history_for_project04_2021-03-02int.txt

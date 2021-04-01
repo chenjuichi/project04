@@ -1,0 +1,7 @@
+{
+    //"php-cs-fixer.rules": "@PSR2",
+    "php-cs-fixer.rules": "",
+    "intelephense.diagnostics.undefinedMethods": false,
+    "editor.showDeprecated": false,
+    //"php-cs-fixer.config": ".php_cs",
+}

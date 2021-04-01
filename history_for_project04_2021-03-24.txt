@@ -1,0 +1,364 @@
+    1  lsb_release -a
+    2  sudo apt update sudo apt -y upgrade
+    3  sudo apt update
+    4  sudo apt -y upgrade
+    5  blkid | awk -F\" '/swap/ {print $2}'
+    6  blkid
+    7  ls
+    8  sudo swapon --show  .== check if your Ubuntu installation already has swap enabled
+    9  sudo swapon --show
+   10  sudo free -h
+   11  sudo fallocate -l 8G /swapfile1
+   12  sudo chmod 777 /swapfile1
+   13  sudo mkswap /swapfile1
+   14  sudo chmod 600 /swapfile1
+   15  sudo mkswap /swapfile1
+   16  sudo swapon /swapfile1
+   17  sudo free -h
+   18  lsblk
+   19  swapon -s
+   20  sudo swapon --show
+   21  sudo free -h
+   22  mkdir .ssh
+   23  ls
+   24  nano ~/.ssh/authorized_keys
+   25  chmod 700 ~/.ssh
+   26  chmod 600 ~/.ssh/authorized_keys
+   27  chown $USER:$USER ~/.ssh -R
+   28  nano /etc/ssh/sshd_config
+   29  vim /etc/sysctl.conf
+   30  sudo sysctl -p
+   31  cat /proc/sys/fs/inotify/max_user_watches
+   32  sysctl net.ipv4.ip_forward
+   33  vim /etc/sysctl.conf
+   34  sysctl net.ipv4.ip_forward
+   35  sudo sysctl -p
+   36  sudo apt-get install openssh-server
+   37  sudo systemctl status ssh
+   38  nano /etc/ssh/sshd_config
+   39  sudo systemctl restart ssh
+   40  sudo apt -y install software-properties-common
+   41  sudo add-apt-repository ppa:ondrej/php
+   42  sudo apt update
+   43  systemctl list-units --type=target --all
+   44  systemctl list-units --type=service --all | grep ssh
+   45  sudo apt -y install php7.4
+   46  sudo apt -y install php7.4-mysql mysql-client mysql-server
+   47  sudo apt -y install php7.4-mbstring php7.4-xml php7.4-zip unzip vim git php7.4-cli php7.4-common php7.4-gd php7.4-curl php7.4-intl php7.4-bcmath php7.4-imap libapache2-mod-php7.4
+   48  php -v
+   49  php -m
+   50  ll /
+   51  sudo apt autoremove
+   52  php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+   53  php -r "if (hash_file('sha384', 'composer-setup.php') === '756890a4488ce9024fc62c56153228907f1545c228516cbf63f885e036d37e9a59d27d63f46af1d4d07ee0f76181c7d3') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+   54  php composer-setup.php
+   55  php -r "unlink('composer-setup.php');"
+   56  ls
+   57  sudo mv composer.phar /usr/local/bin/composer
+   58  ls
+   59  which php
+   60  echo 'export PATH="$HOME/.config/composer/vendor/bin:$PATH"' >> ~/.bashrc
+   61  echo 'export PATH="/usr/bin/php:$PATH"' >> ~/.bashrc
+   62  source ~/.bashrc
+   63  composer global require laravel/installer
+   64  composer global about
+   65  php -m
+   66  sudo apt -y install nodejs
+   67  sudo apt -y install npm
+   68  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
+   69  echo 'export NVM_DIR="$HOME/.nvm"' >> ~/.bashrc
+   70  echo '#This loads nvm' >> ~/.bashrc
+   71  echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> ~/.bashrc
+   72  echo '#This loads nvm bash_completion' >> ~/.bashrc
+   73  echo '[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"' >> ~/.bashrc
+   74  source ~/.bashrc
+   75  nvm --version
+   76  nvm install v12.20.1
+   77  npm -v
+   78  sudo apt -y install git
+   79  composer create-project --prefer-dist laravel/laravel:^7.0 project04
+   80  ls
+   81  cd project04
+   82  ls
+   83  git init
+   84  git status
+   85  git add .
+   86  echo "# my laravel application, project04" >> README.md
+   87  git status
+   88  git add .
+   89  git status
+   90  git commit -m "ver0.0"
+   91  git config --global user.email "chenjuichi@gmail.com"
+   92  git config --global user.name "chenjuichi"
+   93  git commit -m "ver0.0"
+   94  git log
+   95  nano .gitignore
+   96  git remote add origin https://github.com/chenjuichi/project04
+   97  git status
+   98  git add .
+   99  git commit -m "ver0.0"
+  100  git log
+  101  git push origin master
+  102  git push -u origin master
+  103  chmod -R 777 storage
+  104  chmod -R 777 bootstrap/cache
+  105  ls
+  106  npm install
+  107  npm audit fix
+  108  npm set audit false
+  109  ls
+  110  mysql
+  111  mysql -u root -p
+  112  composer require laravel/ui:2.*
+  113  php artisan ui vue --auth
+  114  npm install && npm run dev
+  115  npm install vuetify
+  116  npm install vuex --save
+  117  npm install vue-router
+  118  npm install --save @fortawesome/fontawesome-free
+  119  npm install @mdi/font
+  120  npm install --save vue-sweetalert2
+  121  npm install vue-i18n
+  122  npm install
+  123  composer require laravel/sanctum
+  124  php artisan vendor:publish --provider="Laravel\Sanctum\SanctumServiceProvider"
+  125  php artisan make:model Role -m
+  126  php artisan make:model Permission -m
+  127  php artisan make:migration create_users_permissions_table
+  128  php artisan make:migration create_users_roles_table
+  129  php artisan make:migration create_roles_permissions_table
+  130  mysql
+  131  mysql -u root -p
+  132  php artisan migrate
+  133  npm install vue-country-flag
+  134  npm install
+  135  php artisan make:seeder UsersTableSeeder
+  136  php artisan migrate:fresh --seed
+  137  php artisan db:seed --class=UsersTableSeeder
+  138  php artisan migrate:fresh --seed
+  139  php artisan make:seeder PermissionsTableSeeder
+  140  php artisan make:seeder RolesTableSeeder
+  141  php artisan db:seed --class=RolesTableSeeder
+  142  php artisan db:seed --class=PermissionsTableSeeder
+  143  composer require --dev squizlabs/php_codesniffer
+  144  npm install material-icons
+  145  cd resources
+  146  ls
+  147  cd js
+  148  ls
+  149  svn ls
+  150  git clone https://github.com/chenjuichi/project03/tree/master/resources/js/sidebar-pro
+  151  ls
+  152  git clone https://github.com/chenjuichi/project03/resources/js/sidebar-pro
+  153  npm run dev
+  154  cd ..
+  155  npm install bootstrap-select
+  156  npm install
+  157  npm install vue-i18n
+  158  npm install
+  159  composer require guzzlehttp/guzzle
+  160  php artisan storage:link
+  161  npm install view-design --save
+  162  php artisan make:controller AdminController
+  163  php artisan make:model Tag --migration
+  164  php artisan make:model Category --migration
+  165  npm install material-design-icons
+  166  npm install
+  167  npm i vue-slide-up-down
+  168  npm install
+  169  npm run dev
+  170  npm install moment --save
+  171  npm run dev
+  172  npm install malihu-custom-scrollbar-plugin
+  173  npm install
+  174  npm run dev
+  175  php artisan tinker
+  176  php -S 172.105.193.109:8000 -t public/
+  177  npm run watch
+  178  php -S 172.105.193.109:8000 -t public/
+  179  npm run watch
+  180  php -S 172.105.193.109:8000 -t public/
+  181  npm install socket.io
+  182  npm install
+  183  php artisan make:middleware AdminCheck
+  184  php artisan tinker
+  185  composer global require friendsofphp/php-cs-fixer
+  186  echo $PATH
+  187  vim ~/.bashrc
+  188  echo $PATH
+  189  source ~/.bashrc
+  190  echo $PATH
+  191  php -S 172.105.193.109:8000 -t public/
+  192  npm run watch
+  193  history > history_for_project04_2021-03-02int.txt
+  194  vim ~/.bashrc
+  195  npm run dev
+  196  ip
+  197  php artisan tinker
+  198  php artisan make:provider RolesServiceProvider
+  199  php artisan tinker
+  200  php -S 172.105.193.109:8000 -t public/
+  201  php artisan tinker
+  202  npm run watch
+  203  php -S 172.105.193.109:8000 -t public/
+  204  php artisan make:provider PermissionServiceProvider
+  205  php artisan tinker
+  206  npm run watch
+  207  php artisan tinker
+  208  php artisan make:policy ItemPolicy --model=User
+  209  php artisan tinker
+  210  php -S 172.105.193.109:8000 -t public/
+  211  php artisan make:migration add_description_to_permissions_table --table=permissions
+  212  php artisan migrate
+  213  php -S 172.105.193.109:8000 -t public/
+  214  npm run watch
+  215  npm i --save @fortawesome/fontawesome-svg-core
+  216  npm i --save @fortawesome/free-solid-svg-icons
+  217  npm install
+  218  npm i --save @fortawesome/vue-fontawesome@latest
+  219  npm install
+  220  npm run dev
+  221  php -S 172.105.193.109:8000 -t public/
+  222  php artisan tinker
+  223  npm run watch
+  224  npm run DEV
+  225  npm run dev
+  226  npm i bootstrap-multiselect
+  227  npm uninstall bootstrap-multiselect
+  228  npm install vue-multiselect --save
+  229  npm run dev
+  230  php artisan tinker
+  231  npm run watch
+  232  php artisan tinker
+  233  php -S 172.105.193.109:8000 -t public/
+  234  npm run watch
+  235  php -S 172.105.193.109:8000 -t public/
+  236  npm run watch
+  237  php -S 172.105.193.109:8000 -t public/
+  238  php artisan tinker
+  239  npm run watch
+  240  php artisan migrate
+  241  php artisan make:migration change_curd_from_roles_table --table=roles
+  242  php artisan migrate
+  243  php artisan make:migration add_curds_to_roles_table --table=roles
+  244  php artisan migrate
+  245  php -S 172.105.193.109:8000 -t public/
+  246  npm run watch
+  247  php artisan tinker
+  248  npm run watch
+  249  php -S 172.105.193.109:8000 -t public/
+  250  npm run watch
+  251  npm run watch
+  252  php artisan make:migration add_curd_to_roles_table --table=roles
+  253  php artisan tinker
+  254  php artisan make:migration change_curds_from_roles_table --table=roles
+  255  php artisan migrate
+  256  composer require doctrine/dbal
+  257  php artisan migrate
+  258  composer update
+  259  php artisan migrate
+  260  php artisan tinker
+  261  npm install vue-focus --save
+  262  npm install
+  263  npm uninstall vue-focus --save
+  264  npm install
+  265  npm run dev
+  266  npm i --save @fortawesome/vue-fontawesome@latest
+  267  npm install
+  268  php artisan tinker
+  269  php -S 172.105.193.109:8000 -t public/
+  270  npm run watch
+  271  php -S 172.105.193.109:8000 -t public/
+  272  npm run watch
+  273  php -S 172.105.193.109:8000 -t public/
+  274  npm run watch
+  275  php -S 172.105.193.109:8000 -t public/
+  276  npm run watch
+  277  php -S 172.105.193.109:8000 -t public/
+  278  npm install --save vue-editor-js
+  279  npm install
+  280  npm run watch
+  281  php -S 172.105.193.109:8000 -t public/
+  282  npm run dev
+  283  npm install --save vue-editor-js
+  284  npm install
+  285  npm run dev
+  286  npm i --save @vue/composition-api
+  287  npm install
+  288  npm run dev
+  289  npm install --save vue-editor-js
+  290  npm install
+  291  npm run dev
+  292  npm uninstall --save vue-editor-js
+  293  npm uninstalli --save @vue/composition-api
+  294  npm uninstall --save @vue/composition-api
+  295  npm install
+  296  npm i @editorjs/editorjs --save
+  297  npm install
+  298  npm i @editorjs/header --save
+  299  npm i @editorjs/paragraph --save
+  300  npm i @editorjs/list --save
+  301  npm i @editorjs/image --save
+  302  npm i @editorjs/embed --save
+  303  npm i @editorjs/table --save
+  304  npm install
+  305  npm run dev
+  306  npm uninstall @editorjs/table --saveuninstall
+  307  npm uninstall @editorjs/embed --save
+  308* 
+  309  npm uninstall @editorjs/list --save
+  310  npm uninstall @editorjs/paragraph --save
+  311  npm uninstall @editorjs/header --save
+  312  npm uninstall @editorjs/editorjs --save
+  313  npm install
+  314  npm install --save vue-editor-js
+  315  npm install
+  316  npm i @editorjs/editorjs --save
+  317  npm i --save @vue/composition-api
+  318  npm run dev
+  319  npm uninstall --save @vue/composition-api
+  320  npm install
+  321  npm run dev
+  322  php -S 172.105.193.109:8000 -t public/
+  323  npm run watch
+  324  php -S 172.105.193.109:8000 -t public/
+  325  npm install --save @editorjs/header
+  326  npm install
+  327  npm i --save-dev @types/editorjs__header
+  328  npm install
+  329  npm unstall --save-dev @types/editorjs__header
+  330  npm uninstall --save-dev @types/editorjs__header
+  331  npm install
+  332  npm install --save @editorjs/image
+  333  npm install
+  334  npm install --save @editorjs/list
+  335  npm install --save @editorjs/embed
+  336  npm install
+  337  php artisan route:list
+  338  php artisan route:list > SomeFile.txt
+  339  npm run watch
+  340  history > history_for_project04_2021-03-23.txt
+  341  npm i --save-dev @editorjs/code
+  342  npm i --save @editorjs/paragraph
+  343  npm i --save-dev @editorjs/checklist
+  344  npm i --save-dev @editorjs/link
+  345  npm i --save-dev @editorjs/quote
+  346  npm i --save-dev @editorjs/raw
+  347  npm i --save-dev @editorjs/warning
+  348  npm i --save-dev @editorjs/table
+  349  npm install
+  350  npm i --save-dev @editorjs/delimiter
+  351  npm run watch
+  352  php -S 172.105.193.109:8000 -t public/
+  353  php artisan make:migration add_categoryName_iconImage_to_categories_table --table=categories
+  354  php artisan make:migration add_tagName_to_tags_table --table=tags
+  355  php artisan migrate
+  356  php artisan make:migration change_post_from_blogs_table --table=blogs
+  357  php artisan migrate
+  358  php artisan make:migration change_metaDescription_from_blogs_table --table=blogs
+  359  php artisan migrate
+  360  php artisan make:migration change_post_excerpt_from_blogs_table --table=blogs
+  361  php artisan migrate
+  362  php artisan make:migration change_title_from_blogs_table --table=blogs
+  363  php artisan migrate
+  364  history > history_for_project04_2021-03-24.txt

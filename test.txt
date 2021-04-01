@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<!-- Note that the <li> elements inside <ul> are not indented (whitespaces). 
+If they were, the first child node of <ul> would be a text node 
+-->
+<div data-v-877118a6="" id="vue-editor-js">WELCOME0
+	<div class="codex-editor">M0
+	  	<div class="codex-editor__redactor">U1
+	    	<div class="ce-block ce-block--focused">U2
+	      		<div class="ce-block__content">U3
+	        		<div class="ce-paragraph cdx-block">U4</div>
+	      		</div>
+	    	</div>
+	  	</div>
+  		<div>hello</div>
+	  	<div class="codex-editor-overlay">L1
+	    	<div class="codex-editor-overlay__container">L1-1
+	      		<div class="codex-editor-overlay__rectangle">L1-1-1</div>
+	    	</div>
+	  	</div>
+	  	<div class="ce-toolbar ce-toolbar--opened">L2
+		    <div class="ce-toolbar__content">L2-1
+		    	<div class="ce-toolbar__actions ce-toolbar__actions--opened">L2-1-1
+		        	<div class="ce-toolbar__actions-buttons">L2-1-1-1
+		          		<span class="ce-toolbar__settings-btn">L2-1-1-1-1</span>
+		       		</div>
+			        <div class="ce-settings">L2-1-1-2
+			          	<div class="ce-settings__plugin-zone">L2-1-1-2-1</div>
+			          	<div class="ce-settings__default-zone">L2-1-1-2-2</div>
+			        </div>
+		      	</div>
+		    	<div class="ce-toolbar__plus ce-toolbar__plus--hidden">L2-1-2</div>
+	 		</div>
+	 	</div>
+	</div>
+</div>
+<p>Click the button to remove the first item from the list.</p>
+
+<button onclick="myFunction()">Try it</button>
+<p id="demo"></p>
+<script>
+function myFunction() {
+  var node = document.getElementById("vue-editor-js");
+  if( node.hasChildNodes() ) {
+  document.getElementById("demo").innerHTML = node.childNodes.length.toString();
+
+    // 可以透過 node.childNodes[n] (n 為數字索引) 取得對應的節點
+    // 注意，NodeList 物件內容為即時更新的集合
+    for (var i = 0; i < node.childNodes[i].length; i++) {
+        
+document.getElementById("demo").innerHTML = node.childNodes[i].length;
+      //document.getElementById("demo").innerHTML = node.childNodes[i];
+      if( node.childNodes[i].nodeType === 3 ) {
+        document.getElementById("demo").innerHTML = node.childNodes[i].textContent;
+      };
+    }
+  }
+}
+</script>
+
+</body>
+</html>
+
+
