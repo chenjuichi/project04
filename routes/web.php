@@ -25,8 +25,15 @@ Route::middleware('auth')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-//2021-02-25 mark
+
+//2021-02-25 mark, 2021-04-06 enable BlogController
 //Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/blog', 'BlogController@index')->name('blog_home');
+Route::get('/blog/{slug}', 'BlogController@blogSingle')->name('blog_slug');
+Route::get('/category/{categoryName}/{id}', 'BlogController@categoryIndex')->name('blog_cat');
+Route::get('/tag/{tagName}/{id}', 'BlogController@tagIndex')->name('blog_tag');
+Route::get('/blogs', 'BlogController@allBlogs')->name('allblogs');
+Route::get('/search', 'BlogController@search')->name('search');
 
 //2020-02-25 add, for auth
 Route::group(['middleware' => ['auth']], function () {

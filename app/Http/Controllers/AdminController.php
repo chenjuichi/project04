@@ -68,17 +68,20 @@ class AdminController extends Controller
         //dd("current path:" . "  " . $path);
         //        
         $hasPermission = false;
-        foreach ($permission as $p) {
-            if ($p->name == $path) {
-                //$right = $p->rTag ? 'true' : 'false';
-                if ($p->rTag) {
-                    $hasPermission = true;
+        //dd($permission);
+        if ($permission != null) {
+            foreach ($permission as $p) {
+                if ($p->name == $path) {
+                    //$right = $p->rTag ? 'true' : 'false';
+                    if ($p->rTag) {
+                        $hasPermission = true;
+                        break;
+                    }
                     break;
                 }
-                break;
-            }
-            //$right = $hasPermission ? 'true' : 'false';
+                //$right = $hasPermission ? 'true' : 'false';
             //dd($p->name . "  " . $right . "  " . $path);
+            }
         }
 
         //if ($hasPermission) {

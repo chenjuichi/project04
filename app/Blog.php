@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Tag;
+//use App\Blog;
 use App\Category;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
@@ -32,5 +33,11 @@ class Blog extends Model
     //public function cat(){
     public function categories(){
         return $this->belongsToMany(Category::class, 'blogs_categories');
+    }
+    
+    public function user()
+    {
+        //return $this->belongsTo(User::class)->select('id', 'fullName', 'profilePic');
+        return $this->belongsTo(User::class)->select('id', 'name');
     }    
 }

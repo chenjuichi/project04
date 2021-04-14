@@ -98,13 +98,14 @@ export default {
     this.token = window.Laravel.csrfToken;
     //console.log("token: ", this.token);
 
-    const res = await this.callApi("get", "/api/blogsdata");
-    console.log("blogs module, blog data when create: ", res);
-    if (res.status === 200) {
-      this.blogs = res.data;
-    } else {
-      this.swr();
-    }
+    this.fetchItems();
+    //const res = await this.callApi("get", "/api/blogsdata");
+    //console.log("blogs module, blog data when create: ", res);
+    //if (res.status === 200) {
+    //  this.blogs = res.data;
+    //} else {
+    //  this.swr();
+    //}
   },
 
   computed: {
@@ -115,11 +116,11 @@ export default {
       isLoggedIn: "isLoggedIn",
       allUsers: "allUsers",
     }),
-    /*
+    
 		...mapGetters({
             getDeleteModalObj: "getDeleteModalObj",
 		}),
-		*/
+		
     somethingElse() {
       return 1 + 2;
     },
@@ -134,12 +135,34 @@ export default {
 			//console.log("watch: ", obj);
 			if (obj.isDeleted) {
 			//console.log("inside if...");
-				this.tags.splice(obj.deletingIndex, 1);
+        this.fetchItems();
+
+				this.blogs.splice(obj.deletingIndex, 1);
 			}
 		}
 	},
 
   methods: {
+    async fetchItems() {
+      const res = await this.callApi("get", "/api/blogsdata");
+      console.log("blogs module, fetch data: ", res);
+      if (res.status === 200) {
+        this.blogs = res.data;
+      } else {
+        this.swr();
+      }
+
+
+      //const res = await this.callApi("get", "/api/get_roles");
+      //if (res.status == 200) {
+      //  this.roles = res.data;
+      //} else {
+      //  this.swr();
+      //}
+
+      //this.$store.dispatch("setDeleteModalImmediate", false);
+    },
+
     watchCreateBlog() {
       this.$router.push("/hello1/hello140");
     },
@@ -211,13 +234,12 @@ export default {
     showDeletingModal(tag, i) {
       const deleteModalObj = {
         showDeleteModal: true,
-        deleteUrl: "/api/delete_tag",
+        deleteUrl: "/api/delete_blog",
         data: tag,
         deletingIndex: i,
         isDeleted: false,
       };
       this.$store.dispatch("setDeletingModalObj", deleteModalObj);
-      console.log("tags.vue showDeletingModal function is called...");
       //this.deleteItem = tag;
       //this.deletingIndex = i;
       //this.showDeleteModal = true;
@@ -231,7 +253,9 @@ export default {
 			}
 			*/
       //this.$store.commit('setDeletingModalObj', deleteModalObj);
-      console.log("delete method called");
+      //if (this.getDeleteModalObj.isDeleted)
+      //  this.fetchItems();
+      console.log("blogs.vue, delete method called...");
     },
     showEditModal(tag, index) {
       let obj = {

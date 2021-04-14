@@ -231,11 +231,11 @@ export default {
       isLoggedIn: "isLoggedIn",
       allUsers: "allUsers",
     }),
-    /*
+    
 		...mapGetters({
             getDeleteModalObj: "getDeleteModalObj",
 		}),
-		*/
+		
     somethingElse() {
       return 1 + 2;
     },

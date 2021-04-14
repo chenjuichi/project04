@@ -438,6 +438,7 @@ export default {
                 } else {                                            //找不到 administrator
                     console.log("role is NOT administrator....");
                     this.$router.push("hello2");
+                    //window.location.href = '/home';
                 }
             }
         },

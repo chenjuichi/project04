@@ -34,10 +34,10 @@ export default {
       if (!this.user)
         console.log("Hello..., Please Login!");
       else {
-        console.log("Hello..., $user: ", this.user);
+        console.log("Hello, this.user: ", this.user);
         console.log("and");
         this.curds = JSON.parse(this.user.roles[0].curds);
-        //console.log("Hello..., $permission: ", this.curds);
+        console.log("Hello, this.curds: ", this.curds);
 
         this.$store.dispatch('setCurrentUserPermissionCurds', this.curds);
       }

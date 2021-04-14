@@ -3,5 +3,6 @@
     "php-cs-fixer.rules": "",
     "intelephense.diagnostics.undefinedMethods": false,
     "editor.showDeprecated": false,
+    "emmet.triggerExpansionOnTab": true,
     //"php-cs-fixer.config": ".php_cs",
 }

@@ -53,7 +53,7 @@ export default {
          
         checkUserPermission(key){
             let tempP = this.getPermission;
-            console.log("this.getPermission => ", tempP);
+            console.log("common.js, this.getPermission => ", tempP);
             //if (!tempP) {
             if (tempP.length == 0) {
                 return true;
@@ -62,7 +62,7 @@ export default {
             let isPermitted = false;
             let tempRoute = this.$route.name.replace('.', '/');
             for (let i = 0; i < tempP.length; i++) {
-                //console.log("this.getPermission check name: ", tempRoute, tempP[i]['name']);
+                console.log("this.getPermission check name: ", tempRoute, tempP[i]['name'], tempP[i][key]);
                 if (tempRoute==tempP[i]['name']) {
                     if (tempP[i][key]) {
                         isPermitted = true;
